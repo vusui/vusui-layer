@@ -1,0 +1,1065 @@
+/*!
+ * VusUI v1.0[layer] (http://vusui.com | https://vusui.github.io)
+ * Copyright 2017-present The VusUI Authors
+ */
+/* 重置样式 */
+[class*="vus-layer"],
+[class*="vus-layer"] * {
+    box-sizing: border-box;
+    outline: 0;
+}
+[class*="vus-layer"] a {
+    text-decoration: none;
+}
+[class*="vus-layer"] a:hover {
+    outline: 0;
+    text-decoration: none;
+}
+[class*="vus-layer"] ul,
+[class*="vus-layer"] li {
+    list-style: none;
+}
+
+/* 图标 */
+.vus-layer-title-icon .icon,
+.vus-layer-resize,
+.vus-layer-icon .icon,
+.vus-layer-photos .vus-layer-photos-content-arrow,
+.vus-layer-photos .vus-layer-photos-content-btn .icon {
+    background-image: url(icon.png);
+    background-position: 0 0;
+    background-repeat: no-repeat;
+}
+
+/* layer层与遮罩层 */
+.vus-layer,
+.vus-layer-mask {
+    position: fixed;
+    pointer-events: auto;
+}
+.vus-layer {
+    top: 150px;
+    left: 0;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, .3);
+    -webkit-overflow-scrolling: touch;
+    -webkit-background-clip: content;
+    box-sizing: content-box;
+}
+.vus-layer-mask {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0, 0, 0);
+    opacity: 0.3;
+}
+
+/* 边框 */
+.vus-layer-border {
+    border: 1px solid rgba(0, 0, 0, .1);
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, .15);
+}
+
+/* 标题栏 */
+.vus-layer-title {
+    height: 42px;
+    line-height: 42px;
+    color: #333;
+    font-size: 14px;
+    padding: 0 100px 0 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eee;
+    border-radius: 4px 4px 0 0;
+}
+.vus-layer-title-icon {
+    line-height: initial;
+    position: absolute;
+    top: 13px;
+    right: 15px;
+    z-index: 2;
+}
+.vus-layer-title-icon .icon {
+    width: 16px;
+    height: 16px;
+    display: block;
+    float: left;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+.vus-layer-title-icon .icon:not(.vus-layer-close2):hover {
+    opacity: .6;
+}
+.vus-layer-title-icon .icon + .icon {
+    margin-left: 10px;
+}
+.vus-layer-title-icon .vus-layer-min {
+    background-position: 0 0;
+}
+.vus-layer-title-icon .vus-layer-restore {
+    background-position: -16px 0;
+}
+.vus-layer-title-icon .vus-layer-max {
+    background-position: -32px 0;
+}
+.vus-layer-title-icon .vus-layer-close1 {
+    background-position: -48px 0;
+}
+/* no title */
+.vus-layer-title-icon.none-title {
+    top: -16px;
+    right: -16px;
+}
+.vus-layer-title-icon .vus-layer-close2 {
+    width: 32px;
+    height: 32px;
+    background-position: 0 -26px;
+}
+.vus-layer-title-icon .vus-layer-close2:hover {
+    background-position: -32px -26px;
+}
+/* msg && tips*/
+.vus-layer-title-icon.none-title-msg {
+    top: 6px;
+    right: 6px;
+}
+.vus-layer-title-icon.none-title-msg .icon {
+    opacity: .7;
+}
+.vus-layer-title-icon.none-title-msg .icon:hover {
+    opacity: .5;
+}
+.vus-layer-title-icon .vus-layer-close3 {
+    background-position: -80px -0;
+}
+.vus-layer-title-icon .vus-layer-close4 {
+    background-position: -96px -0;
+}
+
+
+/* 按钮 */
+.vus-layer-button {
+    position: relative;
+    padding: 0 15px 12px;
+    pointer-events: auto;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+.vus-layer-button-left {
+    justify-content: flex-start;
+}
+.vus-layer-button-center {
+    justify-content: center;
+}
+.vus-layer-button a {
+    height: 32px;
+    line-height: 32px;
+    margin: 6px 5px 0;
+    padding: 0 15px;
+    border: 1px solid #e3e3e3;
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px;
+    font-weight: 400;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: all .25s ease;
+    transition: all .25s ease;
+}
+.vus-layer-button a:hover {
+    opacity: 0.8;
+}
+.vus-layer-button .vus-layer-button-0 {
+    border-color: #09f;
+    background-color: #09f;
+    color: #fff;
+}
+
+/* 内容容器 */
+.vus-layer-content {
+    position: relative;
+    overflow: hidden;
+    display: block;
+}
+.vus-layer-content-radius {
+    border-radius: 4px;
+}
+.vus-layer-content-radius-title {
+    border-radius: 4px 4px 0 0;
+}
+.vus-layer-content-radius-button {
+    border-radius: 0 0 4px 4px;
+}
+.vus-layer-content-scroll {
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.vus-layer-content-text {
+    max-width: 100%;
+    flex-basis: 0;
+    flex-grow: 1;
+    word-break: break-all;
+    word-wrap: break-word;
+    text-align: left;
+}
+.vus-layer-content-text-center {
+    text-align: center;
+}
+.vus-layer-content-text-right {
+    text-align: right;
+}
+
+/* 图标 */
+.vus-layer-icon {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.vus-layer-icon .icon {
+    width: 32px;
+    height: 32px;
+    display: inline-flex;
+    margin: -5px 10px -5px 0;
+}
+.vus-layer-icon .icon0 {
+    background-position: 0 -68px;
+}
+.vus-layer-icon .icon1 {
+    background-position: -32px -68px;
+}
+.vus-layer-icon .icon2 {
+    background-position: -64px -68px;
+}
+.vus-layer-icon .icon3 {
+    background-position: -96px -68px;
+}
+.vus-layer-icon .icon4 {
+    background-position: -128px -68px;
+}
+.vus-layer-icon .icon5 {
+    background-position: -160px -68px;
+}
+
+/* 提示 */
+.vus-layer-alert,
+.vus-layer-prompt {
+    min-width: 260px;
+    max-width: 300px;
+}
+.vus-layer-alert .vus-layer-padding,
+.vus-layer-prompt .vus-layer-padding {
+    padding: 20px;
+}
+.vus-layer-alert .vus-layer-content-text,
+.vus-layer-notify .vus-layer-content-text {
+    line-height: 22px;
+}
+.vus-layer-dialog .vus-layer-title,
+.vus-layer-notify .vus-layer-title {
+    font-size: 16px;
+    background-color: transparent;
+    border-bottom: none;
+}
+.vus-layer-dialog .vus-layer-padding,
+.vus-layer-notify .vus-layer-padding {
+    padding: 10px 15px 20px;
+}
+
+/* prompt */
+.vus-layer-prompt .vus-layer-padding {
+    padding: 20px;
+}
+.vus-layer-prompt .vus-layer-content-title {
+    padding-bottom: 5px;
+}
+.vus-layer-prompt .vus-layer-content-content {
+    padding-top: 5px;
+}
+.vus-layer-prompt .vus-layer-content-input {
+    width: 100%;
+    height: auto;
+    line-height: 16px;
+    padding: 10px;
+    color: #333;
+    font-size: 14px;
+    border: 1px solid #e3e3e3;
+    background-color: #fff;
+    border-radius: 4px;
+    display: block;
+    resize: none;
+    appearance: none;
+    transition: border-color .25s ease-in-out, box-shadow .25s cubic-bezier(.35, .81, .45, 1.47);
+}
+.vus-layer-prompt .vus-layer-content-input:not([disabled]):not(.disabled):focus {
+	outline: 0;
+    box-shadow: 0 0 0 4px rgba(153, 153, 153, .1);
+	z-index: 2;
+}
+.vus-layer-prompt .vus-layer-content-input-count {
+    padding: 8px 2px 0;
+    line-height: 1;
+}
+.vus-layer-prompt .vus-layer-content-input-count-color {
+    color: #f00;
+}
+.vus-layer-prompt .vus-layer-content-input.success:not([disabled]):not(.disabled):focus {
+    border-color: #2a4;
+    box-shadow: 0 0 0 4px rgba(34, 170, 68, .1);
+}
+.vus-layer-prompt .vus-layer-content-input.error:not([disabled]):not(.disabled):focus {
+    border-color: #f00;
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, .1);
+}
+.vus-layer-prompt .vus-layer-content-input.warning:not([disabled]):not(.disabled):focus {
+    border-color: #e83;
+    box-shadow: 0 0 0 4px rgba(238, 136, 51, .1);
+}
+
+/* notify */
+.vus-layer-notify {
+    min-width: 200px;
+    max-width: 300px;
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, .1);
+    transition: opacity .3s, transform .3s, left .3s, right .3s, top .4s, bottom .3s;
+}
+.vus-layer-notify .vus-layer-title {
+    font-weight: 700;
+}
+.vus-layer-notify-lt {
+    top: 20px;
+    right: auto;
+    left: 10px;
+    bottom: auto;
+}
+.vus-layer-notify-lb {
+    top: auto;
+    right: auto;
+    left: 10px;
+    bottom: 20px;
+}
+.vus-layer-notify-rt {
+    top: 20px;
+    right: 10px;
+    left: auto;
+    bottom: auto;
+}
+.vus-layer-notify-rb {
+    top: auto;
+    right: 10px;
+    left: auto;
+    bottom: 20px;
+}
+
+/* 抽屉 */
+.vus-layer-drawer {
+    min-width: auto;
+}
+.vus-layer-drawer-position {
+    border-radius: 0;
+}
+.vus-layer-drawer-left,
+.vus-layer-drawer-right {
+    max-width: 85%;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    left: 0;
+}
+.vus-layer-drawer-top,
+.vus-layer-drawer-bottom {
+    width: 100%;
+    max-width: 100%;
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+}
+.vus-layer-drawer-right {
+    right: 0;
+    left: auto;
+}
+.vus-layer-drawer-bottom {
+    top: auto;
+    bottom: 0;
+}
+
+/* 信息 */
+.vus-layer-msg {
+    min-width: 100px;
+    max-width: 260px;
+    box-shadow: none;
+}
+.vus-layer-msg .vus-layer-padding {
+    padding: 15px 28px;
+}
+.vus-layer-msg .vus-layer-padding-icon {
+    padding: 15px 30px 15px 20px;
+}
+.vus-layer-msg .vus-layer-content-text {
+    line-height: 1.4;
+}
+.vus-layer-msg .vus-layer-icon .icon {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    margin-right: 10px;
+}
+.vus-layer-msg .vus-layer-icon .icon0 {
+    background-position: 0 -130px;
+}
+.vus-layer-msg .vus-layer-icon .icon1 {
+    background-position: -20px -130px;
+}
+.vus-layer-msg .vus-layer-icon .icon2 {
+    background-position: -40px -130px;
+}
+.vus-layer-msg .vus-layer-icon .icon3 {
+    background-position: -60px -130px;
+}
+.vus-layer-msg .vus-layer-icon .icon4 {
+    background-position: -80px -130px;
+}
+.vus-layer-msg .vus-layer-icon .icon5 {
+    background-position: -100px -130px;
+}
+.vus-layer-msg-default {
+    border: 0;
+    color: #fff;
+    background-color: rgba(0,0,0,.5);
+}
+.vus-layer-msg-status {
+    top: 20px !important;
+}
+.vus-layer-msg-status .vus-layer-icon .icon0 {
+    background-position: 0 -110px;
+}
+.vus-layer-msg-status .vus-layer-icon .icon1 {
+    background-position: -20px -110px;
+}
+.vus-layer-msg-status .vus-layer-icon .icon2 {
+    background-position: -40px -110px;
+}
+.vus-layer-msg-status .vus-layer-icon .icon4 {
+    background-position: -80px -110px;
+}
+.vus-layer-msg-success {
+    color: rgba(34, 170, 68, .9);
+    background-color: #ebfff0;
+    border: 1px solid rgba(34, 170, 68, .2);
+}
+.vus-layer-msg-error {
+    color: rgba(221, 85, 68, .9);
+    background-color: #ffe8e5;
+    border: 1px solid rgba(221, 85, 68, .2);
+}
+.vus-layer-msg-warning {
+    color: rgba(238, 136, 51, .9);
+    background-color: #ffefe2;
+    border: 1px solid rgba(238, 136, 51, .2);
+}
+.vus-layer-msg-info {
+    color: rgba(51, 170, 238, .9);
+    background-color: #e2f4ff;
+    border: 1px solid rgba(51, 170, 238, .2);
+}
+
+/* iframe */
+.vus-layer-iframe {}
+.vus-layer-iframe iframe,
+.vus-layer-iframe .vus-layer-content-iframe,
+.vus-layer-drawer .vus-layer-content-drawer {
+    width: 100%;
+    display: block;
+}
+
+/* drawer */
+.vus-layer-drawer .vus-layer-content-drawer {
+    height: 100%;
+}
+
+/* 提示 */
+.vus-layer-tips {
+    background: none;
+    box-shadow: none;
+    border: none;
+}
+.vus-layer-tips .{}
+.vus-layer-tips .vus-layer-content,
+.vus-layer-tips .vus-layer-content-scroll {
+    overflow: visible;
+}
+.vus-layer-tips .vus-layer-content-text {
+    min-width: 12px;
+    line-height: 1.5;
+    padding: 10px 15px;
+    font-size: 12px;
+    border-radius: 4px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .1);
+    background-color: #000;
+    color: #fff;
+    position: relative;
+}
+.vus-layer-tips .vus-layer-tips-arrow { 
+    width: 0;
+    height: 0; 
+    position: absolute;  
+    border-width: 10px; 
+    border-color: transparent; 
+    border-style: solid; 
+}
+.vus-layer-tips .vus-layer-tips-top, 
+.vus-layer-tips .vus-layer-tips-bottom {
+    left: 5px;
+    border-right-style: solid;
+    border-right-color: #000;
+}
+.vus-layer-tips .vus-layer-tips-top {
+    bottom: -10px;
+}
+.vus-layer-tips .vus-layer-tips-bottom {
+    top: -10px;
+}
+.vus-layer-tips .vus-layer-tips-right, 
+.vus-layer-tips .vus-layer-tips-left {
+    top: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: #000;
+}
+.vus-layer-tips .vus-layer-tips-right {
+    left: -10px;
+}
+.vus-layer-tips .vus-layer-tips-left {
+    right: -10px;
+}
+
+/* 相集 */
+.vus-layer-photos {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    pointer-events: none;
+}
+.vus-layer-photos .vus-layer-title-icon {
+    top: 10px;
+    right: 10px;
+    pointer-events: auto;
+}
+.vus-layer-photos .vus-layer-content-scroll {
+    width: 100%;
+    height: calc(100% - 124px);
+    overflow: hidden;
+}
+.vus-layer-photos .vus-layer-content-scroll.no-items {
+    height: 100%;
+}
+.vus-layer-photos .vus-layer-content,
+.vus-layer-photos .vus-layer-photos-content {
+    width: 100%;
+    height: 100%;
+}
+.vus-layer-photos .vus-layer-photos-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+.vus-layer-photos .vus-layer-photos-content img {
+    pointer-events: auto;
+}
+.vus-layer-photos .vus-layer-photos-content .move {
+    cursor: grab;
+}
+.vus-layer-photos .vus-layer-photos-content .img-transition {
+    transition: all .3s ease-out;
+}
+.vus-layer-photos .vus-layer-photos-content-title,
+.vus-layer-photos .vus-layer-photos-content-count {
+    color: #fff;
+    font-size: 18px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+.vus-layer-photos .vus-layer-photos-content-title {
+    top: 10px;
+}
+.vus-layer-photos .vus-layer-photos-content-count,
+.vus-layer-photos .vus-layer-photos-content-btn {
+    bottom: 10px;
+}
+.vus-layer-photos .vus-layer-photos-content-btn {
+    position: absolute;
+    right: 10px;
+    pointer-events: auto;
+    display: inline-flex;
+}
+.vus-layer-photos .vus-layer-photos-content-btn .icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.vus-layer-photos .vus-layer-photos-content-btn .icon1 {
+    background-position: -64px -26px;
+}
+.vus-layer-photos .vus-layer-photos-content-btn .icon2 {
+    background-position: -96px -26px;
+}
+.vus-layer-photos .vus-layer-photos-content-btn .icon3 {
+    background-position: -128px -26px;
+}
+
+
+.vus-layer-photos .vus-layer-photos-content-arrow {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: calc(50% - 20px);
+    pointer-events: auto;
+    cursor: pointer;
+    opacity: .5;
+}
+.vus-layer-photos .vus-layer-photos-content-arrow.prev {
+    left: 10px;
+    background-position: -130px -110px;
+}
+.vus-layer-photos .vus-layer-photos-content-arrow.next {
+    right: 10px;
+    background-position: -170px -110px;
+}
+.vus-layer-photos .vus-layer-photos-content-arrow:hover {
+    opacity: 1;
+}
+.vus-layer-photos .vus-layer-photos-list {
+    width: 100%;
+    height: 124px;
+    overflow: hidden;
+    display: flex;
+    background-color: rgba(0,0,0,.8);
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    pointer-events: auto;
+    padding: 0 2px;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap {
+    width: 100%;
+    height: 124px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    display: flex;
+    align-items: center;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    background: #888;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap::-webkit-scrollbar-track {
+    border-radius: 0;
+    background: #555;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap li {
+    flex: 0 0 100px;
+    height: 100px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid transparent;
+    overflow: hidden;
+    border-radius: 4px;
+    background-color: rgba(0,0,0,1);
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    opacity: .6;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap li:hover,
+.vus-layer-photos .vus-layer-photos-list-wrap li.active {
+    border-color: #fff;
+    opacity: 1;
+}
+.vus-layer-photos .vus-layer-photos-list-wrap li img {
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block;
+}
+
+
+/*显示时的过渡效果*/
+.slide-photos-left-enter-active,
+.slide-photos-left-leave-active {
+    animation: VusLeftSlideIn .5s;
+}
+/*隐藏时的过渡效果*/
+.slide-photos-left-leave-active {
+    animation: VusRightSlideOut .5s;
+}
+
+/*显示时的过渡效果*/
+.slide-photos-right-enter-active,
+.slide-photos-right-leave-active {
+    animation: VusRightSlideIn .5s;
+}
+/*隐藏时的过渡效果*/
+.slide-photos-right-leave-active {
+    animation: VusLeftSlideOut .5s;
+}
+
+
+
+/* 加载 */
+.vus-layer-loading {
+    min-width: 32px;
+    max-width: 260px;
+    box-shadow: none;
+}
+.vus-layer-loading .vus-layer-padding {
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.vus-layer-loading .vus-layer-content,
+.vus-layer-loading .vus-layer-content-scroll {
+    overflow: visible;
+}
+.vus-layer-loading .vus-layer-content-text {
+    line-height: 1.2;
+    text-align: center;
+    padding: 5px;
+}
+.vus-layer-loading-default {
+    border: 0;
+    background-color: transparent;
+}
+.vus-layer-loading-text {
+    border: 0;
+    color: rgba(255,255,255,.95);
+    background-color: rgba(0,0,0,.6);
+}
+.vus-layer-loading-text .vus-layer-padding {
+    padding: 10px 15px;
+}
+
+/* 类型 */
+.vus-layer-loading .vus-layer-loading-type0 {
+	width: 32px;
+	height: 32px;
+	display: inline-block;
+	-webkit-transform-origin: 50%;
+	transform-origin: 50%;
+	animation: VusLoadTypeSpin0 1s step-end infinite;
+}
+.vus-layer-loading .vus-layer-loading-type0::after,
+.vus-layer-loading .vus-layer-loading-type0-white::after {
+	display: block;
+	width: 100%;
+	height: 100%;
+	content: '';
+	background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\'><defs><line id=\'l\' x1=\'60\' x2=\'60\' y1=\'7\' y2=\'27\' stroke=\'%23333\' stroke-width=\'11\' stroke-linecap=\'round\'/></defs><g><use xlink:href=\'%23l\' opacity=\'.1\'/><use xlink:href=\'%23l\' opacity=\'.15\' transform=\'rotate(30 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.2\' transform=\'rotate(60 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.25\' transform=\'rotate(90 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.3\' transform=\'rotate(120 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.3\' transform=\'rotate(150 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.45\' transform=\'rotate(180 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.55\' transform=\'rotate(210 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.65\' transform=\'rotate(240 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.75\' transform=\'rotate(270 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.85\' transform=\'rotate(300 60,60)\'/><use xlink:href=\'%23l\' opacity=\'1\' transform=\'rotate(330 60,60)\'/></g></svg>");
+	background-repeat: no-repeat;
+	background-position: 50%;
+	background-size: 100%;
+}
+.vus-layer-loading .vus-layer-loading-type-white0::after {
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg viewBox=\'0 0 120 120\' xmlns=\'http://www.w3.org/2000/svg\' xmlns:xlink=\'http://www.w3.org/1999/xlink\'><defs><line id=\'l\' x1=\'60\' x2=\'60\' y1=\'7\' y2=\'27\' stroke=\'%23fff\' stroke-width=\'11\' stroke-linecap=\'round\'/></defs><g><use xlink:href=\'%23l\' opacity=\'.1\'/><use xlink:href=\'%23l\' opacity=\'.15\' transform=\'rotate(30 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.2\' transform=\'rotate(60 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.25\' transform=\'rotate(90 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.3\' transform=\'rotate(120 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.3\' transform=\'rotate(150 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.45\' transform=\'rotate(180 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.55\' transform=\'rotate(210 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.65\' transform=\'rotate(240 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.75\' transform=\'rotate(270 60,60)\'/><use xlink:href=\'%23l\' opacity=\'.85\' transform=\'rotate(300 60,60)\'/><use xlink:href=\'%23l\' opacity=\'1\' transform=\'rotate(330 60,60)\'/></g></svg>");
+}
+@keyframes VusLoadTypeSpin0{0%{transform:rotate(0deg)}8.33333333%{transform:rotate(30deg)}16.66666667%{transform:rotate(60deg)}25%{transform:rotate(90deg)}33.33333333%{transform:rotate(120deg)}41.66666667%{transform:rotate(150deg)}50%{transform:rotate(180deg)}58.33333333%{transform:rotate(210deg)}66.66666667%{transform:rotate(240deg)}75%{transform:rotate(270deg)}83.33333333%{transform:rotate(300deg)}91.66666667%{transform:rotate(330deg)}100%{transform:rotate(360deg)}}
+
+/* 2 */
+.vus-layer-loading .vus-layer-loading-type1,
+.vus-layer-loading .vus-layer-loading-type-white1 {
+    width: 32px;
+    height: 32px;
+    position: relative;
+    border: 4px solid transparent;
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: 1s VusLoadTypeSpin1 linear infinite;
+}
+.vus-layer-loading .vus-layer-loading-type-white1 {
+    border-top-color: #fff;
+}
+.vus-layer-loading .vus-layer-loading-type1::before {
+    content: '';
+    display: block;
+    width: inherit;
+    height: inherit;
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    border: 4px solid currentcolor;
+    border-radius: 50%;
+    opacity: .3;
+}
+@keyframes VusLoadTypeSpin1 {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+/* 2 */
+.vus-layer-loading .vus-layer-loading-type2 {
+    width: 32px;
+    height: 32px;
+    position: relative;
+}
+.vus-layer-loading .vus-layer-loading-type2::before,
+.vus-layer-loading .vus-layer-loading-type2::after,
+.vus-layer-loading .vus-layer-loading-type-white2::before,
+.vus-layer-loading .vus-layer-loading-type-white2::after {
+    content: '';
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    background-color: #ee0808;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: VusLoadTypeSpin2 2.0s infinite ease-in-out;
+}
+.vus-layer-loading .vus-layer-loading-type-white2::before,
+.vus-layer-loading .vus-layer-loading-type-white2::after {
+    background-color: #fff;
+}
+.vus-layer-loading .vus-layer-loading-type2::after {
+    animation-delay: -1.0s;
+}
+@keyframes VusLoadTypeSpin2 {
+    0%, 100% {transform: scale(0);}
+    50% {transform: scale(1);}
+}
+
+/* 3 */
+.vus-layer-loading .vus-layer-loading-type3,
+.vus-layer-loading .vus-layer-loading-type-white3 {
+    width: 32px;
+    height: 32px;
+    background-color: #ee0808;
+    animation: VusLoadTypeSpin3 1.2s infinite ease-in-out;
+}
+.vus-layer-loading .vus-layer-loading-type-white3 {
+    background-color: #fff;
+}
+@keyframes VusLoadTypeSpin3 {
+    0% {transform: perspective(120px) rotateX(0deg) rotateY(0deg);}
+    50% {transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);}
+    100% {transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);}
+}
+
+
+
+
+/* 拖拽移动 */
+.vus-layer-move {
+    display: none;
+    width: 100%;
+    height: 100%;
+    cursor: move;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1995051230;
+    opacity: 0;
+    background-color: #fff;
+}
+.vus-layer-resize {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    cursor: se-resize;
+    background-position: -64px 0;
+}
+
+
+/* 动画 */
+.vus-layer-anim {
+    -webkit-animation-duration: .3s;
+    animation-duration: .3s;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+/* =====in动画===== */
+.vus-layer-anim-0 {
+    animation-name: VusSlideIn;
+}
+.vus-layer-anim-1 {
+    animation-name: VusBounceIn;
+}
+.vus-layer-anim-2 {
+    animation-name: VusFadeIn;
+}
+/* 从左in */
+.vus-layer-anim-3 {
+    animation-name: VusLeftSlideIn;
+}
+/* 从上in */
+.vus-layer-anim-4 {
+    animation-name: VusUpSlideIn;
+}
+/* 从右in */
+.vus-layer-anim-5 {
+    animation-name: VusRightSlideIn;
+}
+/* 从下in */
+.vus-layer-anim-6 {
+    animation-name: VusDownSlideIn;
+}
+
+/* ======out动画===== */
+.vus-layer-anim-close-0 {
+    animation-name: VusSlideOut;
+}
+.vus-layer-anim-close-1 {
+    animation-name: VusBounceOut;
+}
+.vus-layer-anim-close-2 {
+    animation-name: VusFadeOut;
+}
+/* 从左out */
+.vus-layer-anim-close-3 {
+    animation-name: VusLeftSlideOut;
+}
+/* 从上out */
+.vus-layer-anim-close-4 {
+    animation-name: VusUpSlideOut;
+}
+/* 从右out */
+.vus-layer-anim-close-5 {
+    animation-name: VusRightSlideOut;
+}
+/* 从下out */
+.vus-layer-anim-close-6 {
+    animation-name: VusDownSlideOut;
+}
+
+
+/* Slide */
+@keyframes VusSlideIn {
+    0% {transform: translate(0, -20px);opacity: 0;}
+    100% {transform: translate(0, 0);opacity: 1;}
+}
+@keyframes VusSlideOut {
+    0% {transform: translate(0, 0);opacity: 1;}
+    100% {transform: translate(0, -20px);opacity: 0;}
+}
+
+/* Bounce */
+@keyframes VusBounceIn {
+    0% {opacity: 0;transform: scale(.5);}
+    100% {opacity: 1;transform: scale(1);}
+}
+@keyframes VusBounceOut {
+    100% {opacity: 0;transform: scale(.7);}
+    30% {transform: scale(1.05);}
+    0% {transform: scale(1);}
+}
+
+/* Fade */
+@keyframes VusFadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+}
+@keyframes VusFadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;}
+}
+
+/* 从左in */
+@keyframes VusLeftSlideIn {
+    0% {opacity: 0;transform: translate3d(-100%, 0, 0);}
+    100% {opacity: 1;transform: none;}
+}
+/* 从左out */
+@keyframes VusLeftSlideOut {
+    0% {opacity: 1;transform: none;}
+    100% {opacity: 0;transform: translate3d(-100%, 0, 0);}
+}
+/* 从上in*/
+@keyframes VusUpSlideIn {
+    0% {opacity: 0;transform: translate3d(0, -100%, 0);}
+    100% {opacity: 1;transform: none;}
+}
+/* 从上out */
+@keyframes VusUpSlideOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;transform: translate3d(0, -100%, 0);}
+}
+/* 从右in*/
+@keyframes VusRightSlideIn {
+    0% {opacity: 0;transform: translate3d(100%, 0, 0);}
+    100% {opacity: 1;transform: none;}
+}
+/* 从右out */
+@keyframes VusRightSlideOut {
+    0% {opacity: 1;transform: none;}
+    100% {opacity: 0;transform: translate3d(100%, 0, 0);}
+}
+/* 从下in */
+@keyframes VusDownSlideIn {
+    0% {opacity: 0;transform: translate3d(0, 100%, 0);}
+    100% {opacity: 1;transform: none;}
+}
+/* 从下out */
+@keyframes VusDownSlideOut {
+    0% {opacity: 1;transform: none;}
+    100% {opacity: 0;transform: translate3d(0, 100%, 0);}
+}
+
+
+
+
+
+
+
+
+/* 大于等于576px xs */
+@media (min-width: 576px) {
+    .vus-layer-alert,
+    .vus-layer-msg,
+    .vus-layer-notify,
+    .vus-layer-prompt {
+        max-width: 360px;
+    }
+}
+
+/* 大于等于 768px sm */
+@media (min-width: 768px) {
+    .vus-layer-alert,
+    .vus-layer-msg,
+    .vus-layer-prompt {
+        max-width: 100%;
+    }
+}
