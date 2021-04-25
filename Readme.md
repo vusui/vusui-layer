@@ -22,7 +22,6 @@ Vusui-layer 的诞生，参考了 Layer.js、Element 及其他技术社区上一
 $ npm install vusui-layer --save
 ```
 
- 在 `main.js` 中写入以下内容。（注：Vusui-app-layer 使用到 `Vuex` 状态管理模式，所以，需要安装引入 `Vuex`。）
 ```
 import Vue from 'vue';
 import App from './App.vue';
